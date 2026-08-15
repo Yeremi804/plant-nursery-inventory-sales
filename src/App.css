@@ -160,7 +160,7 @@ body {
   min-height: calc(100vh - 12rem);
   padding: 3rem 1.5rem;
   gap: 1rem;
-  background-image: url('./assets/pDP4l2.gif');
+  background-image: linear-gradient(rgba(248, 247, 247, 0.5)), url('./assets/pDP4l2.gif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -179,7 +179,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 0.85rem;
-  color: #dfe7e7;
+  color: #080808;
 }
 
 .products {
@@ -199,9 +199,91 @@ body {
   padding-bottom: 2rem;
 }
 
+.product-grid-Admin {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 700px;
+  max-height: min(480px, calc(100dvh - 16rem));
+  margin-top: 1rem;
+  padding: 0 1rem 1rem 0.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  align-content: start;
+  background-color: rgba(230, 226, 226, 0.719);
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .product-grid-Admin {
+    grid-template-columns: minmax(0, 1fr);
+    scrollbar-gutter: auto; 
+  }
+}
+
+.product-card-admin {
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+
+.product-card-admin__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+
+.product-card-admin__title {
+  padding: 0.6rem 0.75rem 0.35rem;
+  color: #1f2933;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+.product-card-admin__price {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.product-card-admin__description {
+  margin: 0.75rem 0.75rem 0.75rem;
+  color: #4b5563;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+  min-height: 3.84rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.product-card-admin__status {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 .product-card {
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 20px;
   background: #ffffff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -225,8 +307,8 @@ body {
 }
 
 .delete-button {
-  margin-top: inherit;
-  align-self: center;;
+  margin: auto 0.75rem 0.75rem;
+  align-self: center;
   padding: 0.55rem 1rem;
   border: none;
   border-radius: 999px;
@@ -275,6 +357,8 @@ body {
 }
 
 .admin-page {
+  flex: 1;
+  min-height: 0;
   padding: 2rem 1.5rem;
 }
 
@@ -282,16 +366,21 @@ body {
   display: grid;
   justify-content: start;
   gap: 2rem;
+  min-width: 0;
 }
 
 .admin-panel__header {
   display: grid;
   gap: 0.75rem;
+  h1 {
+    color: #000000;
+  }
 }
 
 @media (min-width: 900px) {
   .admin-panel {
-    grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    grid-template-columns: minmax(280px, 420px) minmax(0, 700px);
+    justify-content: center;
     align-items: start;
   }
 
@@ -305,6 +394,9 @@ body {
   display: grid;
   gap: 1rem;
   max-width: 560px;
+  min-width: 0;
+  background: #ffffff;
+  border-radius: 16px;
 }
 
 .admin-form label,
@@ -312,6 +404,7 @@ body {
   display: grid;
   gap: 0.5rem;
   font-weight: 600;
+  min-width: 0;
 }
 
 .admin-form .checkbox-label,
@@ -325,10 +418,30 @@ body {
 .admin-form textarea,
 .login-form input:not([type="checkbox"]) {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 0.9rem 1rem;
   border: 1px solid #d1d5db;
   border-radius: 12px;
   font: inherit;
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+.admin-form input[type="file"] {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.preview-image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .admin-form input[type="checkbox"] {
@@ -401,7 +514,11 @@ body {
 }
 
 .admin-preview {
-  padding-top: 1rem;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #edf0f3;
+  border-radius: 12px;
+  padding: 1rem;
 }
 
 .admin-preview h2 {
@@ -410,14 +527,14 @@ body {
 
 @media (min-width: 900px) {
   .admin-preview {
-    padding-top: 0;
+      max-width: 700px;
   }
 }
 
 h1 {
   margin: 0 0 1rem;
   font-size: clamp(2.5rem, 4vw, 4rem);
-  color: #f0f8f6;
+  color: #000000;
 }
 
 .description {
@@ -425,7 +542,7 @@ h1 {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: #e8f0ee;
+  color: #0d0e0d;
 }
 
 .footer {
@@ -434,6 +551,12 @@ h1 {
   color: #4b5563;
   font-size: 0.95rem;
   border-top: 1px solid rgba(15, 118, 110, 0.2);
+}
+
+.page {
+  display:flex;
+  flex-direction: column; 
+  min-height: 100dvh; 
 }
 
 .page-section {
@@ -450,6 +573,7 @@ h1 {
 .contact-page {
   display: grid;
   gap: 2rem;
+  flex: 1;
 }
 
 .about-hero,
@@ -458,6 +582,7 @@ h1 {
   padding: 2rem;
   border-radius: 24px;
   background: rgba(20, 184, 166, 0.12);
+  flex:1;
 }
 
 .about-hero h1,

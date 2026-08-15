@@ -128,23 +128,23 @@ function AdminDashBoard({ products, onAddProduct, onDeleteProduct, onRestoreDefa
 
         <section className="admin-preview">
           <h2>Current stock</h2>
-          <div className="product-grid">
+          <div className="product-grid-Admin">
             {products.map((product) => (
-              <figure key={product.id} className="product-card">
+              <figure key={product.id} className="product-card-admin">
                 {product.photo && (
                   <img
-                    className="product-card__image"
+                    className="product-card-admin__image"
                     src={product.photo}
                     alt={product.name}
                   />
                 )}
-                <figcaption className="product-card__title">
+                <figcaption className="product-card-admin__title">
                   {product.name}
-                  <span className="product-card__price">{product.price}</span>
+                  <span className="product-card-admin__price">{product.price}</span>
                 </figcaption>
-                <p className="product-card__description">{product.description}</p>
+                <p className="product-card-admin__description">{product.description}</p>
                 {!product.available && (
-                  <span className="product-card__status">Unavailable</span>
+                  <span className="product-card-admin__status">Unavailable</span>
                 )}
                 <button
                   type="button"

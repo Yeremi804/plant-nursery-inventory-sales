@@ -20,7 +20,7 @@ const initialProducts = [
   },
   {
     id: 2,
-    name: 'Succulent Trio',
+    name: 'Affrican Tree',
     price: '$19.99',
     description: 'Easy-care succulents for sunny windowsills.',
     photo: plant2,
