@@ -2,8 +2,7 @@ body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
-  background: linear-gradient(180deg, #e8faf4 0%, #f8fffc 100%);
-  color: #0f2c20;
+  color: #edf5d3;
 }
 
 * {
@@ -13,6 +12,44 @@ body {
 .page {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Moss Aura: body owns the dark base; these layers remain transparent. */
+.aura-layer,
+.aura-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.aura-layer {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.aura-layer-1 {
+  background: linear-gradient(150deg, #11150d 0%, #283618 40%, #3f6212 68%, #4d7c0f 100%);
+}
+
+.aura-layer-2 {
+  background: radial-gradient(ellipse 48% 42% at 42% 46%, rgba(163, 230, 53, 0.18) 0%, rgba(101, 163, 13, 0.08) 48%, transparent 75%);
+  mix-blend-mode: screen;
+  filter: blur(173px);
+}
+
+.aura-grain {
+  mix-blend-mode: overlay;
+  opacity: 0.85;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -665,4 +702,74 @@ h1 {
 
 .contact-form button:hover {
   background: #115e59;
+}
+
+/* Shared dark-surface colors keep every existing page readable over Moss. */
+.topbar,
+.footer { border-color: rgba(222, 242, 177, 0.24); }
+
+.brand { color: #e6f4bc; }
+.brand:hover,
+.nav button:hover,
+.nav a:hover { color: #b8e34a; }
+
+.nav a,
+.nav button,
+.description,
+.products,
+.footer { color: #d6e5b9; }
+
+.hero {
+  background-image: none;
+}
+
+.eyebrow { color: #c7ef58; }
+h1 { color: #f1f8dc; }
+
+.hero-primary,
+.restore-button,
+.contact-form button { background: #456d13; }
+.hero-primary:hover,
+.restore-button:hover,
+.contact-form button:hover { background: #5d8d1a; }
+
+.hero-secondary,
+.nav-login { background: rgba(232, 255, 169, 0.12); color: #eff8d4; border-color: rgba(208, 242, 116, 0.65); }
+.hero-secondary:hover { background: rgba(232, 255, 169, 0.22); }
+
+.product-card,
+.product-card-admin,
+.about-card,
+.contact-card,
+.admin-form,
+.login-form,
+.admin-preview { background: rgba(17, 25, 12, 0.74); border-color: rgba(222, 242, 177, 0.18); box-shadow: 0 12px 30px rgba(4, 10, 1, 0.28); }
+
+.product-card__title,
+.product-card-admin__title,
+.about-card h2,
+.contact-card h2,
+.about-hero h1,
+.contact-hero h1,
+.admin-panel__header h1 { color: #f1f8dc; }
+
+.product-card__description,
+.product-card-admin__description,
+.about-hero p,
+.contact-hero p,
+.contact-card ul,
+.contact-form label { color: #d6e5b9; }
+
+.about-hero,
+.contact-hero { background: rgba(154, 205, 50, 0.1); }
+
+.contact-form input,
+.contact-form textarea,
+.admin-form input:not([type="checkbox"]),
+.admin-form textarea,
+.login-form input:not([type="checkbox"]) { background: rgba(250, 255, 237, 0.94); color: #17250d; border-color: rgba(210, 242, 145, 0.5); }
+
+@media (max-width: 768px) {
+  .aura-layer-2 { filter: blur(120px); }
+  .nav { background: #1e2c12; border: 1px solid rgba(222, 242, 177, 0.22); }
 }
